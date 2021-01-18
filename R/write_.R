@@ -1,3 +1,6 @@
+#### Functions to store data
+
+
 #' Write a data frame to a file with extra info
 #'
 #' @details Writes an .Rds file using saveRDS with xz compression
