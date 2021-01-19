@@ -1,7 +1,7 @@
 Package: myRtools
 Type: Package
 Title: Just a package form my general R functions
-Version: 0.1.0
+Version: 0.2.0
 Author: Thanasis N
 Maintainer: Thanasis N <lapauththanasis@gmail.com>
 Description: These can do many interesting things
