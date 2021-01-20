@@ -1,9 +1,5 @@
 
-#### Physical conversions and functions
-
-
-
-####  Conversions  ####
+#### Physical conversions
 
 #' Convert Miles per hour to meters per second
 #'
@@ -15,7 +11,7 @@
 MpH_to_mps <- function( Miles_per_hour ) {
     # 1 mile =  1609.344 meter
     # 1609.344 / 3600
-    Miles_per_hour * 0.44704
+    return(Miles_per_hour * 0.44704)
 }
 
 #' Convert pressure from InHg to mbar
@@ -27,7 +23,7 @@ MpH_to_mps <- function( Miles_per_hour ) {
 #'
 InHg_to_mbar <- function( Inches_Hg ) {
     # 1 inch hg = 33.863886 mbar
-    Inches_Hg * 33.863886
+    return(Inches_Hg * 33.863886)
 }
 
 #' Convert pressure from InHg to Pascals
@@ -39,7 +35,7 @@ InHg_to_mbar <- function( Inches_Hg ) {
 #'
 InHg_to_Pa <- function( Inches_Hg ) {
     # 1 inch hg = 3386.3886 pascal
-    Inches_Hg * 3386.3886
+    return(Inches_Hg * 3386.3886)
 }
 
 #'  Convert inches to millimeters
@@ -51,7 +47,7 @@ InHg_to_Pa <- function( Inches_Hg ) {
 #'
 In_to_mm <- function( Inches ) {
     # 1 Inch = 25.4 mm
-    Inches * 25.4
+    return(Inches * 25.4)
 }
 
 #' Convert Fahrenheit to Celsius

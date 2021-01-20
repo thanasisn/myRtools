@@ -77,7 +77,6 @@ write_RDS <- function(object, file, contact = "<natsisthanasis@gmail.com>") {
     }, file = inffile  )
 
     cat("Written: ", inffile, "\n" )
-
 }
 
 
@@ -160,5 +159,5 @@ write_dat <- function(object, file, contact = "<natsisthanasis@gmail.com>") {
     }, file = inffile  )
 
     cat("Written: ", inffile, "\n" )
-
 }
+
