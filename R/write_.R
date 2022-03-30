@@ -214,7 +214,7 @@ writeDATA <- function(object, file,
                          col.names    = TRUE,
                          qmethod      = c("escape", "double"),
                          fileEncoding = "")
-            cat("Written: ", outfile, "\n" )
+            cat("Written: ", outfile, "\n\n" )
 
             ## todo apply best compression with bash script
 
@@ -243,7 +243,7 @@ writeDATA <- function(object, file,
                             notes    = notes,
                             infofile = infofile),
             file = infofile  )
-        cat("Written: ", infofile, "\n" )
+        cat("Written: ", infofile, "\n\n" )
     }
 }
 
