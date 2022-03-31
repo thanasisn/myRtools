@@ -4,39 +4,6 @@
 #### Functions to store data
 
 
-#' Write a data frame to a file with extra info
-#'
-#' @details Writes an .Rds file using saveRDS with xz compression
-#'   and an companion .inf.md file with extra information for the data.
-#'
-#' @param object  A data frame to be saved.
-#' @param file    A file name to use without the extension.
-#' @param contact Contact information for the data set.
-#' @param notes   Notes on the data
-#' @param clean   If `TRUE` don't write .inf.md files
-#'
-#' @note          It uses the command
-#'                writeDATA(object = object, file = file, contact = contact, notes = notes, clean = clean, type = "Rds")
-#'
-#' @family write functions
-#' @export
-#'
-write_RDS <- function(object, file,
-                      contact = "<lapauththanasis@gmail.com>",
-                      notes   = NA,
-                      clean   = FALSE) {
-
-    writeDATA(object  = object,
-              file    = file,
-              contact = contact,
-              notes   = notes,
-              clean   = clean,
-              type    = "Rds")
-
-}
-
-
-
 
 
 
@@ -54,9 +21,13 @@ object_metadata <- function(object,
                             contact = contact,
                             notes   = NA){
     require(funr, quietly = TRUE, warn.conflicts = FALSE)
+
     scr_name <- try(sys.script(),TRUE)
-    if (file.exists(scr_name)) { Script.Name <- scr_name }
-    else {                       Script.Name <- "Script name could not be resolved" }
+    if (file.exists(scr_name)) {
+        Script.Name <- scr_name
+    } else {
+        Script.Name <- "Script name could not be resolved"
+    }
     meta_obj <- list()
     meta_obj$Object_name <- deparse(substitute(object))
     meta_obj$Meta_date   <- Sys.time()
