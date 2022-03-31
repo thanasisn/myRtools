@@ -117,7 +117,7 @@ markdown_output <- function(object,
 #'
 #' @return        Writes files with data and a corresponding info (md) file.
 #' @family        write functions
-#' @example       writeDATA(iris, "~/iris", type = c("prqt","Rds","dat","prqt") )
+#' @example       writeDATA(iris, "~/iris", type = c("Rds","dat","prqt") )
 #' @export
 #'
 writeDATA <- function(object, file,
@@ -156,7 +156,7 @@ writeDATA <- function(object, file,
         if        (at == "PRQT")   {
             if (! require("arrow",quietly = TRUE, warn.conflicts = FALSE) ) {
                 warning("Missing package 'arrow'")
-                cat(paste("SKIP:",outfile),"\n")
+                cat(paste("SKIP:",outfile),"\n\n")
                 next()
             }
             if (!is.data.frame(object)) {
@@ -169,7 +169,7 @@ writeDATA <- function(object, file,
                            sink        = outfile,
                            compression = 'zstd',
                            compression_level = 9 )
-            cat("Written: ", outfile, "\n" )
+            cat("Written: ", outfile, "\n\n" )
 
 
         } else if (at == "DAT")   {
@@ -178,7 +178,7 @@ writeDATA <- function(object, file,
                          append       = FALSE,
                          quote        = FALSE,
                          sep          = " ;  ",
-                         eol          = "\r\n",
+                         eol          = "\r\n",  ## for unfortunate people with windows
                          na           = "NA",
                          dec          = ".",
                          row.names    = FALSE,
@@ -199,7 +199,7 @@ writeDATA <- function(object, file,
             saveRDS( object   = object,
                      file     = outfile,
                      compress = "xz")
-            cat("Written: ", outfile, "\n" )
+            cat("Written: ", outfile, "\n\n" )
 
         }
     }
@@ -250,6 +250,77 @@ write_dat <- function(object,
               type    = "dat")
 }
 
+
+#' Write a data frame to an Rds file with extra info
+#'
+#' @details Writes an .Rds file using saveRDS with xz compression
+#'   and an companion .inf.md file with extra information for the data.
+#'
+#' @param object  A data frame to be saved.
+#' @param file    A file name to use without the extension.
+#' @param contact Contact information for the data set.
+#' @param notes   Notes on the data
+#' @param clean   If `TRUE` don't write .inf.md files
+#'
+#' @note          It uses the command
+#'                writeDATA(object = object, file = file, contact = contact, notes = notes, clean = clean, type = "Rds")
+#'
+#' @family write functions
+#' @export
+#'
+write_RDS <- function(object, file,
+                      contact = "<lapauththanasis@gmail.com>",
+                      notes   = NA,
+                      clean   = FALSE) {
+
+    writeDATA(object  = object,
+              file    = file,
+              contact = contact,
+              notes   = notes,
+              clean   = clean,
+              type    = "Rds")
+
+}
+
+
+
+#' Default method to write parquet files of data with arrow
+#'
+#' @param object  Object with data
+#' @param file    File to write to
+#' @param contact Contact information of data
+#' @param notes   Notes on the data
+#' @param clean   If `TRUE` don't write .inf.md files
+#'
+#' @note          It uses the command
+#'                writeDATA(object = object, file = file, contact = contact, notes = notes, clean = clean, type = "prqt")
+#'
+#' @return Writes a file with data and a corresponding info (md) file.
+#'
+#' @family write functions
+#' @export
+write_prqt <- function(object,
+                      file,
+                      contact = "<lapauththanasis@gmail.com>",
+                      notes   = NA,
+                      clean   = FALSE ) {
+
+    writeDATA(object  = object,
+              file    = file,
+              contact = contact,
+              notes   = notes,
+              clean   = clean,
+              type    = "prqt")
+}
+
+
+
+
+
+
+
+#
 # writeDATA(iris, "~/iris.jh", type    = c("prqt","Rds","dat","prqt") )
 # write_RDS(iris, "~/iris.jh")
 # write_dat(iris, "~/iris.jh")
+# write_prqt(iris, "~/iris.jh")
