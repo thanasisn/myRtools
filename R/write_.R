@@ -2,7 +2,7 @@
 ## https://github.com/thanasisn <lapauththanasis@gmail.com>
 
 #### Functions to store data
-
+## This is copied here to be available with the rest of the code.
 
 
 
