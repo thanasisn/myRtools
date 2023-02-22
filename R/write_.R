@@ -1,5 +1,5 @@
 
-## https://github.com/thanasisn <lapauththanasis@gmail.com>
+## https://github.com/thanasisn <natsisphysicist@gmail.com>
 
 #### Functions to store data
 ## This is copied here to be available with the rest of the code.
@@ -121,7 +121,7 @@ markdown_output <- function(object,
 #' @export
 #'
 writeDATA <- function(object, file,
-                      contact = "<lapauththanasis@gmail.com>",
+                      contact = "<natsisphysicist@gmail.com>",
                       notes   = NA,
                       clean   = FALSE,
                       type    = c("Rds") ) {
@@ -238,7 +238,7 @@ writeDATA <- function(object, file,
 #' @export
 write_dat <- function(object,
                       file,
-                      contact = "<lapauththanasis@gmail.com>",
+                      contact = "<natsisphysicist@gmail.com>",
                       notes   = NA,
                       clean   = FALSE ) {
 
@@ -269,7 +269,7 @@ write_dat <- function(object,
 #' @export
 #'
 write_RDS <- function(object, file,
-                      contact = "<lapauththanasis@gmail.com>",
+                      contact = "<natsisphysicist@gmail.com>",
                       notes   = NA,
                       clean   = FALSE) {
 
@@ -301,7 +301,7 @@ write_RDS <- function(object, file,
 #' @export
 write_prqt <- function(object,
                       file,
-                      contact = "<lapauththanasis@gmail.com>",
+                      contact = "<natsisphysicist@gmail.com>",
                       notes   = NA,
                       clean   = FALSE ) {
 

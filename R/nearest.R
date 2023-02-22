@@ -1,5 +1,5 @@
 
-## https://github.com/thanasisn <lapauththanasis@gmail.com>
+## https://github.com/thanasisn <natsisphysicist@gmail.com>
 
 
 #' Find nearest numbers between vectors.
