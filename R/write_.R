@@ -20,7 +20,9 @@
 object_metadata <- function(object,
                             contact = contact,
                             notes   = NA){
-    require(funr, quietly = TRUE, warn.conflicts = FALSE)
+    suppressPackageStartupMessages(
+        require(funr, quietly = TRUE, warn.conflicts = FALSE)
+    )
 
     scr_name <- try(sys.script(),TRUE)
     if (file.exists(scr_name)) {
@@ -48,9 +50,11 @@ markdown_output <- function(object,
                             infofile = infofile,
                             contact  = contact,
                             notes    = NA) {
-    require(pander, quietly = TRUE, warn.conflicts = FALSE)
-    require(funr,   quietly = TRUE, warn.conflicts = FALSE)
-    require(gdata,  quietly = TRUE, warn.conflicts = FALSE)
+    suppressPackageStartupMessages({
+        require(pander, quietly = TRUE, warn.conflicts = FALSE)
+        require(funr,   quietly = TRUE, warn.conflicts = FALSE)
+        require(gdata,  quietly = TRUE, warn.conflicts = FALSE)
+    })
 
     panderOptions('table.continues', "")
     # panderOptions('table.style', "simple")
@@ -125,8 +129,10 @@ writeDATA <- function(object, file,
                       notes   = NA,
                       clean   = FALSE,
                       type    = c("Rds") ) {
-    require(pander, quietly = TRUE, warn.conflicts = FALSE)
-    require(funr,   quietly = TRUE, warn.conflicts = FALSE)
+    suppressPackageStartupMessages({
+        require(pander, quietly = TRUE, warn.conflicts = FALSE)
+        require(funr,   quietly = TRUE, warn.conflicts = FALSE)
+    })
     ## definitions
     knowntypes <- c("Rds","dat","prqt")
     type       <- unique(type)
@@ -154,7 +160,7 @@ writeDATA <- function(object, file,
         outfile <- file.path(paste0(prefix,".",at))
         at      <- toupper(at)
         if        (at == "PRQT")   {
-            if (! require("arrow",quietly = TRUE, warn.conflicts = FALSE) ) {
+            if (!suppressPackageStartupMessages(require("arrow",quietly = TRUE, warn.conflicts = FALSE))) {
                 warning("Missing package 'arrow'")
                 cat(paste("SKIP:",outfile),"\n\n")
                 next()
@@ -173,6 +179,7 @@ writeDATA <- function(object, file,
 
 
         } else if (at == "DAT")   {
+            ## TODO try use gdata
             write.table( x            = format( object),
                          file         = outfile,
                          append       = FALSE,
