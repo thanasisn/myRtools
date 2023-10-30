@@ -54,6 +54,7 @@ markdown_output <- function(object,
         require(pander, quietly = TRUE, warn.conflicts = FALSE)
         require(funr,   quietly = TRUE, warn.conflicts = FALSE)
         require(gdata,  quietly = TRUE, warn.conflicts = FALSE)
+        require(utils,  quietly = TRUE, warn.conflicts = FALSE)
     })
 
     panderOptions('table.continues', "")
@@ -180,7 +181,7 @@ writeDATA <- function(object, file,
 
         } else if (at == "DAT")   {
             ## TODO try use gdata
-            write.table( x            = format( object),
+            write.table( x            = format(object),
                          file         = outfile,
                          append       = FALSE,
                          quote        = FALSE,
