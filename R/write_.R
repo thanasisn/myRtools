@@ -38,7 +38,7 @@ object_metadata <- function(object,
     meta_obj$Host        <- Sys.info()["nodename"][[1]]
     meta_obj$Contact     <- contact
     meta_obj$Notes       <- notes
-    meta_obj$Size        <- format(object_size(object), units = "B" )
+    meta_obj$Size        <- format(object.size(object), units = "B" )
 
     return(meta_obj)
 }
