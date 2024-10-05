@@ -5,8 +5,6 @@
 ## This is copied here to be available with the rest of the code.
 
 
-
-
 #' Gather meta data for an R object
 #'
 #' @param object   Object to get metadata for
@@ -38,7 +36,7 @@ object_metadata <- function(object,
     meta_obj$Host        <- Sys.info()["nodename"][[1]]
     meta_obj$Contact     <- contact
     meta_obj$Notes       <- notes
-    meta_obj$Size        <- format(object.size(object), units = "B" )
+    meta_obj$Size        <- format(object_size(object), units = "B" )
 
     return(meta_obj)
 }
