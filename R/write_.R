@@ -88,21 +88,23 @@ markdown_output <- function(object,
     str(object)
     cat(sprintf("```\n"))
 
-    cat(sprintf("\n\n Data quality.\n---------------"))
+    cat(sprintf("\n\n Data quality.\n---------------\n"))
     try(pander(rbind(
         Values = lapply(object, function(x) sum(is.finite(x))),
         INFs   = lapply(object, function(x) sum(is.infinite(x))),
         NAs    = lapply(object, function(x) sum(is.na(x)))
     )))
 
-    cat(sprintf("\n Data Summary.\n---------------"))
+    cat(sprintf("\n Data Summary.\n---------------\n"))
 
     ## for the whole object
-    try(pander(summary( object )))
+    try(pander(summary(object)))
 
     ## for objects within objects
-    try(pander( lapply(object, function(x) summary(x)) ))
+    try(pander(lapply(object, function(x) summary(x))))
 
+    ## for objects within objects try this
+    try(lapply(object, function(x) pander(summary(x))))
 }
 
 
